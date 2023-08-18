@@ -55,13 +55,20 @@ class _MyHomePageState extends State<MyHomePage> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           int num = widget.title + 1;
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => MySecondPage(
-                  title: num,
-                ),
-              ));
+          for(int i = 0; i < 5; i++) {
+            Navigator.pushAndRemoveUntil(context, MaterialPageRoute(
+              builder: (context) => MySecondPage(
+                title: num,
+              ),
+            ), (route) => false);
+          }
+          // Navigator.push(
+          //     context,
+          //     MaterialPageRoute(
+          //       builder: (context) => MySecondPage(
+          //         title: num,
+          //       ),
+          //     ));
         },
         child: const Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
